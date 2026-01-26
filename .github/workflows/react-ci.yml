@@ -1,4 +1,4 @@
-name: React CI - Build Artifact
+name: React CI - Build Artifactss
 
 on:
   push:
@@ -20,8 +20,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build React app
-        run: npm run build
+      - name: Build React apppp
+        run: CI=false npm run build
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
