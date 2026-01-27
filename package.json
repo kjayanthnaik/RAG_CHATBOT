@@ -1,6 +1,7 @@
 {
   "name": "react_",
   "version": "0.1.0",
+  "homepage": "https://kjayanthnaik.github.io/RAG_CHATBOT/",
   "private": true,
   "dependencies": {
     "@mediapipe/camera_utils": "^0.3.1675466862",
