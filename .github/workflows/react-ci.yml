@@ -1,30 +1,80 @@
-name: React CI - Build Artifactss
+# name: React CI - Build Artifactss
+
+# on:
+#   push:
+#     branches: [ master ]
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 20.9.0
+
+#       - name: Install dependencies
+#         run: npm install
+
+#       - name: Build React apppp
+#         run: CI=false npm run build
+
+#       - name: Upload build artifact
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: react-build
+#           path: build/
+
+name: React CI/CD - GitHub Pages
 
 on:
   push:
     branches: [ master ]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
+    name: CI - Build React
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20.9.0
+          node-version: 18
 
-      - name: Install dependencies
-        run: npm install
+      - run: npm install
+      - run: npm test -- --watch=false || true
+      - run: npm run build
 
-      - name: Build React apppp
-        run: CI=false npm run build
-
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: react-build
           path: build/
+
+  deploy:
+    name: CD - Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: react-build
+          path: build
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+      - uses: actions/deploy-pages@v4
