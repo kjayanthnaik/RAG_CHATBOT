@@ -78,7 +78,7 @@
 #       - uses: actions/upload-pages-artifact@v3
 #         with:
 #           path: build
-
+##for deploying to github pages in package.json add "homepage": "https://kjayanthnaik.github.io/RAG_CHATBOT/",
 #       - uses: actions/deploy-pages@v4
 
 ##building using docker and deploying to render
