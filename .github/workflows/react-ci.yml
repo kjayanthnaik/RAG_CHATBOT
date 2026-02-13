@@ -115,7 +115,7 @@ name: CI/CD Docker + Kubernetes
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ] #change to master if you want to run actions as tring jenkins so changed to main simply as  this should not run  
 
 jobs:
   deploy:
@@ -143,7 +143,9 @@ jobs:
           mkdir -p ~/.kube
           echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config
 
-      - name: Deploy to Kubernetes
-        run: |
-          kubectl apply -f deployment.yaml
-          kubectl apply -f service.yaml
+
+##this deploy step does not work here as minikube runns in linux and laptop is windows- so deploy manually using kubectl apply -f deployment.yaml and service.yaml
+      # - name: Deploy to Kubernetes
+      #   run: |
+      #     kubectl apply -f deployment.yaml
+      #     kubectl apply -f service.yaml

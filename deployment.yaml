@@ -1,19 +1,20 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: apps/v1 
+kind: Deployment #type of the resource
 metadata:
-  name: react-frontend
+  name: react-frontend #name of the deployment
 spec:
-  replicas: 2
+  replicas: 2 #number of pod replicas
   selector:
     matchLabels:
-      app: react-frontend
+      app: react-frontend #label to identify the pods
   template:
     metadata:
       labels:
-        app: react-frontend
+        app: react-frontend #label for the pods
     spec:
       containers:
-        - name: react
-          image: jayanth007/react-frontend:latest
+        - name: react #name of the container
+          image: jayanth007/react-frontend-1:latest #docker image to be used for the container
+          imagePullPolicy: Always
           ports:
-            - containerPort: 80
+            - containerPort: 80   #this is the port on which the container will listen for incoming traffic(which is nginx actually listening on)
