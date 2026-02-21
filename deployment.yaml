@@ -1,7 +1,7 @@
 apiVersion: apps/v1 
 kind: Deployment #type of the resource
 metadata:
-  name: react-frontend #name of the deployment
+  name: react-frontend1 #name of the deployment
 spec:
   replicas: 2 #number of pod replicas
   selector:
