@@ -6,11 +6,11 @@ spec:
   replicas: 2 #number of pod replicas
   selector:
     matchLabels:
-      app: react-frontend #label to identify the pods
+      app: react-frontend1 #label to identify the pods
   template:
     metadata:
       labels:
-        app: react-frontend #label for the pods
+        app: react-frontend1 #label for the pods
     spec:
       containers:
         - name: react #name of the container

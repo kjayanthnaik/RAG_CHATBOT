@@ -5,7 +5,7 @@ metadata:
 spec:
   type: NodePort #type of the service
   selector:
-    app: react-frontend #label to identify the pods
+    app: react-frontend1 #label to identify the pods
   ports:
     - port: 80 #port on which the service will be exposed
       targetPort: 80 #port on which the container is listening(which is nginx actually listening on)
