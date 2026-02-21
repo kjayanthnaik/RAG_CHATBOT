@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: react #name of the container
-          image: jayanth007/react-frontend-1:latest #docker image to be used for the container
+          image: jayanth007/react-frontend-1:latest #docker image to be used for the containerr
           imagePullPolicy: Always
           ports:
             - containerPort: 80   #this is the port on which the container will listen for incoming traffic(which is nginx actually listening on)
